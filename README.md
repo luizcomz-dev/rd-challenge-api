@@ -59,11 +59,6 @@ A aplicação está distribuiída na seguinte estrutura:
     * ```src/launches/launches.services.ts``` <br>
     o service responsável por fazer a conexão com a API pública da SpaceX, buscar os dados e gerenciar os erros de conexão
   
-  <br>
-
-# Documentação
-
-A documentação construída com o Swagger pode ser acessada através link abaixo. Lá você encontrará uma descrição dos endpoints da API, incluindo os parâmetros de entrada e saída de cada um deles. Você também pode utilizar o Swagger para testar os endpoints diretamente no navegador
   
   <br>
 
@@ -94,3 +89,9 @@ Cumpridos estes pré-requisitos, basta seguir os seguintes passos:
   ```bash 
   npm run start:dev
   ```
+
+# Documentação
+
+A documentação construída com o Swagger pode ser acessada através link abaixo. Lá você encontrará uma descrição dos endpoints da API, incluindo os parâmetros de entrada e saída de cada um deles. Após rodar a aplicação localmente, a documentação poderá ser acessada através do link:
+
+http://localhost:8080
