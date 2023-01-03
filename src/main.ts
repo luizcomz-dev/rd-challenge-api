@@ -1,4 +1,4 @@
-import { VersioningType } from '@nestjs/common';
+import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
@@ -13,6 +13,11 @@ async function bootstrap() {
 
   await app.listen(
     config.get('SERVER_PORT') ? parseInt(config.get('SERVER_PORT')) : 3000,
+  );
+
+  Logger.log(
+    `Server running on port ${config.get('SERVER_PORT')}`,
+    'Bootstrap',
   );
 }
 bootstrap();
