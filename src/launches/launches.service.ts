@@ -1,27 +1,73 @@
-import { Injectable } from '@nestjs/common';
-
-/* 
-● Próximo lançamento;
-● Último lançamento;
-● Próximos lançamentos;
-● Lançamentos passados;
-*/
+import { Injectable, Logger } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class LaunchesService {
-  getNext() {
-    return 'Get next launch';
+  private readonly logger = new Logger(LaunchesService.name);
+
+  constructor(private readonly httpService: HttpService) {}
+
+  getNext(): Promise<object[]> {
+    return this.httpService.axiosRef
+      .get('/next')
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return {
+          status: 500,
+          message: 'Ocorreu um erro ao tentar buscar o próximo lançamento',
+          error: `[${LaunchesService.name}] - ${error.message}`,
+        };
+      });
   }
 
-  getLatest() {
-    return 'Get latest launch';
+  getLatest(): Promise<object[]> {
+    return this.httpService.axiosRef
+      .get('/latest')
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return {
+          status: 500,
+          message: 'Ocorreu um erro buscar o último lançamento',
+          error: `[${LaunchesService.name}] - ${error.message}`,
+        };
+      });
   }
 
-  getUpcoming() {
-    return 'Get all upcoming launches';
+  getUpcoming(): Promise<object[]> {
+    return this.httpService.axiosRef
+      .get('/upcoming')
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return {
+          status: 500,
+          message: 'Ocorreu um erro ao tentar buscar os próximos lançamentos',
+          error: `[${LaunchesService.name}] - ${error.message}`,
+        };
+      });
   }
 
-  getPast() {
-    return 'Get all past launches';
+  getPast(): Promise<object[]> {
+    return this.httpService.axiosRef
+      .get('/past')
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return {
+          status: 500,
+          message: 'Ocorreu um erro ao tentar buscar os lançamentos passados',
+          error: `[${LaunchesService.name}] - ${error.message}`,
+        };
+      });
   }
 }
