@@ -1,7 +1,9 @@
 import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +15,19 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI,
   });
+
+  // Configura o Swagger
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Desafio RD Station - Luiz Heming')
+    .setDescription(
+      'Ferramenta construída para consulta de dados da API terceira Spacex como parte do processo seletivo da RD Station',
+    )
+    .setVersion('1.0')
+    .addTag('SpaceX-API')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('', app, document);
 
   // Coloca o servidor pra rodar na porta determinada no arquivo .env
   await app.listen(
