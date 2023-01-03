@@ -1,73 +1,96 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Desafio RD Station
+<p>
+Esta API foi desenvolvida como parte do processo seletivo da RD Station. Sua funcionalidade principal é busca de informações sobre os lançamentos efetuados e programados da empresa SpaceX disponíveis em sua API Pública.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A documentação da API da SpaceX pode ser encontrada neste link: https://github.com/r-spacex/SpaceX-API
+<p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<br>
 
-## Description
+# Stack
+Para a cons trução dessa API foram utilizadas as seguinte bibliotecas:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<br>
 
-## Installation
+## NestJS
+<img src="https://d33wubrfki0l68.cloudfront.net/e937e774cbbe23635999615ad5d7732decad182a/26072/logo-small.ede75a6b.svg" alt="NestJS framework" width="24" />
 
-```bash
-$ npm install
-```
+<br>
+Framework em JavaScript para o desenvolvimento de aplicações da web, utilizando o Node.js.
+Dentre os benefícios em utilizar este framework que levaram à sua escolha, estão:
+* Estrutura de aplicação clara e consistente que permite criação e gerenciamento de aplicações de maneira facilitada;
+* Boa integração com bibliotecas e frameworks populares;
+* Uma biblioteca de ferramentas próprias que facilitam muito os trabalhos mais corriqueiros no dia-a-dia como logs, autenticação e permissões, testes, etc.
+* Boa e rica documentação, o que facilita muito o aprendizado e uso do framework.
 
-## Running the app
+<br>
 
-```bash
-# development
-$ npm run start
+## Axios
+<img src="https://axios-http.com/assets/logo.svg" width="100" />
 
-# watch mode
-$ npm run start:dev
+<br>
+Uma biblioteca JavaScript que permite o uso de solicitações HTTP assíncronas, utilizada principalmente para conexão e consumo de API's. É uma ferramenta de fácil utilização com uma sintaxe clara e intuitiva. Além disso, suporta o cancelamenteo de solicitações, envio de cookies, autenticação e muito mais. Seu uso tem se tornado bastante popular principalmente por ser compatível com a maioria dos navegadores e poder ser utilizada tanto no lado do cliente quanto no servidor.
 
-# production mode
-$ npm run start:prod
-```
+<br>
 
-## Test
+## Swagger
+<img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" width="100" />
 
-```bash
-# unit tests
-$ npm run test
+Ferramenta de documentação de API's que permite a criação e manutenção de documentações de maneira simplificada. É utilizada para descrever a interface de API's, incluindo os endpoints disponíveis, os parâmetros de entrada e os tipos de dados de retorno.
 
-# e2e tests
-$ npm run test:e2e
+Além disso, ainda fornece ferramentas para testar as API's diretamente na documentação.
+<br>
+<br>
 
-# test coverage
-$ npm run test:cov
-```
+# Estrutura
+A aplicação está distribuiída na seguinte estrutura:
+* ```src``` <br>
+    diretório onde encontram-se as funcionalidades da aplicação
+  * ```src/main.ts``` <br>
+  é o primeiro arquivo a ser executado, é nele que a aplicação será criada, configurada e o servidor é iniciado.
+  * ```src/app.module.ts``` <br> 
+  o arquivo do módulo principal da aplicação. É o arquivo responsável por importar todos os módulos e disponibilizar os serviços que serão compartilhados pela aplicação.
+  * ```src/launches/``` <br> 
+  nesta pasta estão todos os arquivos do módulo `launches`, responsável pelos recursos de busca e gerenciamento de lançamentos da SpaceX.
+    * ```src/launches/launches.module.ts``` <br> 
+    arquivo responsável pela criação, * configuração e gerenciamento do módulo de `launches` da API
+    * ```src/launches/launches.controller.ts``` <br> 
+    o controller responsável por expôr os endpoints da funcionalidade
+    * ```src/launches/launches.services.ts``` <br>
+    o service responsável por fazer a conexão com a API pública da SpaceX, buscar os dados e gerenciar os erros de conexão
+  
+  <br>
 
-## Support
+# Documentação
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A documentação construída com o Swagger pode ser acessada através link abaixo. Lá você encontrará uma descrição dos endpoints da API, incluindo os parâmetros de entrada e saída de cada um deles. Você também pode utilizar o Swagger para testar os endpoints diretamente no navegador
+  
+  <br>
 
-## Stay in touch
+# Instalação e uso local
+Para baixar, instalar e utilizar a API localmente verifique primeiro se o computador possui instalados o `NodeJS` (versão 12 ou superior) e o `npm` (versão 6 ou superior).
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Cumpridos estes pré-requisitos, basta seguir os seguintes passos:
 
-## License
+1. Faça o clone do repositório: 
+  ```bash
+  git clone https://github.com/luizheming/rd-challenge-api
+  ```
 
-Nest is [MIT licensed](LICENSE).
+2. Acesse a pasta do projeto
+  ```bash
+  cd rd-challenge-api
+  ```
+
+3. Instale as dependências do projeto
+  ```bash
+  npm install
+  ```
+4. Crie o arquivo `.env` baseado no `.env.example` 
+  ```bash
+  cp .env.example .env
+  ```
+5. Execute a API
+  ```bash 
+  npm run start:dev
+  ```
