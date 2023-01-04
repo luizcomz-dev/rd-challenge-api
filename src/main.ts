@@ -29,6 +29,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('', app, document);
 
+  app.enableCors();
+
   // Coloca o servidor pra rodar na porta determinada no arquivo .env
   await app.listen(
     config.get('SERVER_PORT') ? parseInt(config.get('SERVER_PORT')) : 3000,
